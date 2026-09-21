@@ -10,10 +10,9 @@ on:
       - '.github/workflows/pages.yml'
   workflow_dispatch:
 
+# Least privilege at the workflow level; the deploy job widens it for itself.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Let a running deploy finish; queue at most one more.
 concurrency:
@@ -22,11 +21,16 @@ concurrency:
 
 jobs:
   build:
+    name: Build catalog
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '20'
 
@@ -45,16 +49,23 @@ jobs:
           done
           echo "catalog covers all plugins: $names"
 
-      - uses: actions/upload-pages-artifact@v3
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
           path: site/dist
 
   deploy:
+    name: Deploy to Pages
     needs: build
     runs-on: ubuntu-latest
+    # Scoped to this job: the build job stays on contents: read.
+    permissions:
+      pages: write # required by actions/deploy-pages to publish the artifact
+      id-token: write # required by actions/deploy-pages to mint the OIDC token Pages verifies
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

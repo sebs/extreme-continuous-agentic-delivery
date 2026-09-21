@@ -81,19 +81,27 @@ The most common reason a plugin silently fails to load is putting `skills/`, `co
 ## Developing
 
 ```bash
-node site/build.mjs                 # build the catalog into site/dist
-claude plugin validate .            # validate the marketplace manifest
-claude plugin validate plugins/xp-tdd
+npm ci                              # installs only the pinned Claude Code CLI
+npm run build                       # build the catalog into site/dist
+npm run validate                    # strict-validate every manifest, as CI does
 ```
 
-Try it locally before pushing:
+The plugins and the site build have no dependencies — `site/build.mjs` is plain Node and `npm run build` is a convenience wrapper. The lockfile exists only to pin the CLI that validates the manifests, so a CLI release can't turn CI red on its own. Bump it deliberately: bumping is how you find out the plugin schema moved.
+
+Try a real install before pushing:
 
 ```bash
 claude plugin marketplace add .
 claude plugin install xp-tdd@xp-with-claude
 ```
 
-Both are checked in CI ([`validate.yml`](.github/workflows/validate.yml)), and the Pages build additionally fails if a plugin in `marketplace.json` is missing from the generated catalog.
+CI runs the same validation ([`validate.yml`](.github/workflows/validate.yml)), and the Pages build additionally fails if a plugin in `marketplace.json` is missing from the generated catalog.
+
+Both workflows are pinned to action commit SHAs, check out without persisted credentials, and grant `pages`/`id-token` write only to the job that deploys. They audit clean under [`zizmor`](https://docs.zizmor.sh) at every persona:
+
+```bash
+zizmor --persona=auditor .github
+```
 
 ### Adding a plugin
 

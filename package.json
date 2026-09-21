@@ -1,0 +1,14 @@
+{
+  "name": "xp-with-claude",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tooling manifest for the xp-with-claude marketplace. The plugins and the site build have no runtime dependencies; this exists only to pin the Claude Code CLI that CI validates the manifests with.",
+  "license": "MIT",
+  "scripts": {
+    "build": "node site/build.mjs",
+    "validate": "claude plugin validate --strict . && for d in plugins/*/; do claude plugin validate --strict \"$d\" || exit 1; done"
+  },
+  "devDependencies": {
+    "@anthropic-ai/claude-code": "2.1.278"
+  }
+}

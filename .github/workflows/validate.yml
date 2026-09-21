@@ -6,27 +6,44 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+# One validation run per ref; a new push makes the in-flight run irrelevant.
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   validate:
+    name: Validate manifests and catalog
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check out the repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: '20'
+          cache: npm
 
-      - name: Install Claude Code
-        run: npm install -g @anthropic-ai/claude-code
+      # The Claude Code CLI is pinned in package-lock.json with integrity
+      # hashes, so a CLI release can't turn CI red on its own. Bump it
+      # deliberately — bumping is how you find out the plugin schema moved.
+      - name: Install pinned tooling
+        run: npm ci
 
       - name: Validate the marketplace manifest
-        run: claude plugin validate .
+        run: npx claude plugin validate --strict .
 
       - name: Validate every plugin manifest
         run: |
           for dir in plugins/*/; do
             echo "== $dir"
-            claude plugin validate "$dir"
+            npx claude plugin validate --strict "$dir"
           done
 
       - name: Check the site builds
