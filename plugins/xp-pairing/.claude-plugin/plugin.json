@@ -1,0 +1,14 @@
+{
+  "name": "xp-pairing",
+  "version": "1.0.0",
+  "description": "The pairing stance — intellectual honesty and ping-pong handoff. Foundational; pairs well with every other XP plugin.",
+  "author": {
+    "name": "Sebastian Schürmann",
+    "email": "sebs@2xs.org",
+    "url": "https://github.com/sebs"
+  },
+  "homepage": "https://sebs.github.io/extreme-continuous-agentic-delivery/",
+  "repository": "https://github.com/sebs/extreme-continuous-agentic-delivery",
+  "license": "MIT",
+  "keywords": ["xp", "pairing", "pair-programming", "ping-pong", "honesty", "workflow"]
+}

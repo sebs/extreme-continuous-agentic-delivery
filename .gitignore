@@ -1,0 +1,9 @@
+# Generated catalog — built by site/build.mjs, deployed by CI
+site/dist/
+
+# Local, machine-specific Claude Code state (created by installing the plugins locally)
+.claude/settings.local.json
+
+node_modules/
+.DS_Store
+concept.md

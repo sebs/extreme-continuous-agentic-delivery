@@ -1,0 +1,14 @@
+{
+  "name": "xp-planning",
+  "version": "1.0.0",
+  "description": "Thin vertical story slicing and time-boxed spikes — well-shaped work before the TDD loop.",
+  "author": {
+    "name": "Sebastian Schürmann",
+    "email": "sebs@2xs.org",
+    "url": "https://github.com/sebs"
+  },
+  "homepage": "https://sebs.github.io/extreme-continuous-agentic-delivery/",
+  "repository": "https://github.com/sebs/extreme-continuous-agentic-delivery",
+  "license": "MIT",
+  "keywords": ["xp", "planning", "story-slicing", "spike", "invest", "workflow"]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "xp-with-claude",
+  "owner": {
+    "name": "Sebastian Schürmann",
+    "email": "sebs@2xs.org",
+    "url": "https://github.com/sebs"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Extreme Programming disciplines for Claude Code — TDD, pairing, simple design, planning, and continuous integration, written to hold the line against an LLM's specific failure modes."
+  },
+  "plugins": [
+    {
+      "name": "xp-tdd",
+      "source": "./plugins/xp-tdd",
+      "description": "Red-green-refactor as an enforced loop: one failing test at a time, minimum code to pass, run-don't-predict.",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "xp-pairing",
+      "source": "./plugins/xp-pairing",
+      "description": "The pairing stance — intellectual honesty and ping-pong handoff. Foundational; pairs well with every other XP plugin.",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "xp-planning",
+      "source": "./plugins/xp-planning",
+      "description": "Thin vertical story slicing and time-boxed spikes — well-shaped work before the TDD loop.",
+      "category": "workflow",
+      "version": "1.0.0"
+    },
+    {
+      "name": "xp-integration",
+      "source": "./plugins/xp-integration",
+      "description": "Continuous-integration hygiene: small commits, full suite before every commit, never commit red.",
+      "category": "workflow",
+      "version": "1.0.0"
+    }
+  ]
+}

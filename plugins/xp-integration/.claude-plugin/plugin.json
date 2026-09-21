@@ -1,0 +1,14 @@
+{
+  "name": "xp-integration",
+  "version": "1.0.0",
+  "description": "Continuous-integration hygiene: small commits, full suite before every commit, never commit red.",
+  "author": {
+    "name": "Sebastian Schürmann",
+    "email": "sebs@2xs.org",
+    "url": "https://github.com/sebs"
+  },
+  "homepage": "https://sebs.github.io/extreme-continuous-agentic-delivery/",
+  "repository": "https://github.com/sebs/extreme-continuous-agentic-delivery",
+  "license": "MIT",
+  "keywords": ["xp", "continuous-integration", "ci", "git", "commit", "workflow"]
+}

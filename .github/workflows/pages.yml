@@ -1,0 +1,60 @@
+name: Deploy catalog to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.claude-plugin/**'
+      - 'plugins/**'
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish; queue at most one more.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No dependencies to install — build.mjs is plain Node by design.
+      - name: Build catalog
+        run: node site/build.mjs site/dist
+
+      - name: Check the catalog matches the manifest
+        run: |
+          names=$(node -p "require('./.claude-plugin/marketplace.json').plugins.map(p => p.name).join(' ')")
+          for name in $names; do
+            if ! grep -q "id=\"$name\"" site/dist/index.html; then
+              echo "::error::plugin '$name' is in marketplace.json but missing from the generated catalog"
+              exit 1
+            fi
+          done
+          echo "catalog covers all plugins: $names"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
