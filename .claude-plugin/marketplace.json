@@ -7,15 +7,15 @@
   },
   "metadata": {
     "version": "1.0.0",
-    "description": "Extreme Programming disciplines for Claude Code — TDD, pairing, simple design, planning, and continuous integration, written to hold the line against an LLM's specific failure modes."
+    "description": "Extreme Programming disciplines for Claude Code — TDD, exploratory testing, pairing, simple design, planning, and continuous integration, written to hold the line against an LLM's specific failure modes."
   },
   "plugins": [
     {
-      "name": "xp-tdd",
-      "source": "./plugins/xp-tdd",
-      "description": "Red-green-refactor as an enforced loop: one failing test at a time, minimum code to pass, run-don't-predict.",
+      "name": "xp-testing",
+      "source": "./plugins/xp-testing",
+      "description": "The testing disciplines: red-green-refactor as an enforced loop, and chartered exploratory testing that tries to break what the tests already cover.",
       "category": "workflow",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "xp-pairing",

@@ -146,7 +146,7 @@ const html = `<!DOCTYPE html>
     <p>Add the marketplace once, then install whichever plugins you want. Installation reads this
        repository directly — this page is the shop window, not the install channel.</p>
     <pre><code>/plugin marketplace add ${esc(slug)}
-/plugin install xp-tdd@${esc(marketplaceName)}</code></pre>
+/plugin install xp-testing@${esc(marketplaceName)}</code></pre>
   </section>
 
   <section class="why">
@@ -162,6 +162,7 @@ const html = `<!DOCTYPE html>
       <li><strong>Scope creep</strong> — touches adjacent files, adds what nobody asked for.</li>
       <li><strong>Rewrites instead of refactors</strong> — replaces modules instead of making small, reversible moves.</li>
       <li><strong>Agreeable instead of honest</strong> — won&rsquo;t say &ldquo;wrong approach&rdquo;, &ldquo;I&rsquo;m stuck&rdquo;, or &ldquo;that test failed&rdquo;.</li>
+      <li><strong>Confirms instead of probes</strong> — exercises the happy path it had in mind and calls it working.</li>
     </ul>
   </section>
 

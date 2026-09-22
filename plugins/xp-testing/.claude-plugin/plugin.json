@@ -1,0 +1,14 @@
+{
+  "name": "xp-testing",
+  "version": "1.1.0",
+  "description": "The testing disciplines: red-green-refactor as an enforced loop, and chartered exploratory testing that tries to break what the tests already cover.",
+  "author": {
+    "name": "Sebastian Schürmann",
+    "email": "sebs@2xs.org",
+    "url": "https://github.com/sebs"
+  },
+  "homepage": "https://sebs.github.io/extreme-continuous-agentic-delivery/",
+  "repository": "https://github.com/sebs/extreme-continuous-agentic-delivery",
+  "license": "MIT",
+  "keywords": ["xp", "tdd", "testing", "exploratory-testing", "refactoring", "simple-design", "workflow"]
+}

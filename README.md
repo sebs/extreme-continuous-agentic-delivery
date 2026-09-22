@@ -2,13 +2,13 @@
 
 **A Claude Code plugin marketplace that makes Claude practice Extreme Programming.**
 
-Four plugins, eight skills, five commands — each one aimed at a specific way a language model fails at XP, not at reciting the practice.
+Four plugins, nine skills, five commands — each one aimed at a specific way a language model fails at XP, not at reciting the practice.
 
 📦 **Catalog:** <https://sebs.github.io/extreme-continuous-agentic-delivery/>
 
 ```
 /plugin marketplace add sebs/extreme-continuous-agentic-delivery
-/plugin install xp-tdd@xp-with-claude
+/plugin install xp-testing@xp-with-claude
 ```
 
 The repo is the distribution channel — Claude Code installs straight from it. The Pages site is the shop window, generated from `marketplace.json`, and isn't needed to install anything.
@@ -19,12 +19,12 @@ The repo is the distribution channel — Claude Code installs straight from it. 
 
 | Plugin | Skills | Command |
 |---|---|---|
-| **[`xp-tdd`](plugins/xp-tdd/)** *(flagship)* | `tdd`, `refactor-on-green`, `simple-design` | `/tdd <behavior>` |
+| **[`xp-testing`](plugins/xp-testing/)** *(flagship)* | `tdd`, `refactor-on-green`, `simple-design`, `exploratory-testing` | `/tdd <behavior>` |
 | **[`xp-pairing`](plugins/xp-pairing/)** *(foundational)* | `pairing-stance`, `ping-pong` | `/pair [driver\|navigator\|ping-pong]` |
 | **[`xp-planning`](plugins/xp-planning/)** | `story-slicing`, `spike` | `/story <feature>`, `/spike <question>` |
 | **[`xp-integration`](plugins/xp-integration/)** | `keep-it-green` | `/integrate` |
 
-Install only what you want. If you install one thing, make it `xp-tdd`; if you install two, add `xp-pairing`, because `pairing-stance` is the stance the rest rest on.
+Install only what you want. If you install one thing, make it `xp-testing`; if you install two, add `xp-pairing`, because `pairing-stance` is the stance the rest rest on.
 
 ## Why this exists
 
@@ -38,6 +38,7 @@ So these skills don't teach XP. Each targets a concrete failure mode and names i
 2. **Scope creep** — touches adjacent files, adds error handling, flags and abstractions nobody asked for.
 3. **Rewrites instead of refactors** — replaces whole modules instead of making small, reversible moves.
 4. **Agreeable instead of honest** — won't say "wrong approach", "I'm stuck", or "that test actually failed".
+5. **Confirms instead of probes** — exercises the happy path it had in mind and concludes the thing works.
 
 ## The values invert for an LLM
 
@@ -91,8 +92,8 @@ The plugins and the site build have no dependencies — `site/build.mjs` is plai
 Try a real install before pushing:
 
 ```bash
-claude plugin marketplace add .
-claude plugin install xp-tdd@xp-with-claude
+claude plugin marketplace add ./
+claude plugin install xp-testing@xp-with-claude
 ```
 
 CI runs the same validation ([`validate.yml`](.github/workflows/validate.yml)), and the Pages build additionally fails if a plugin in `marketplace.json` is missing from the generated catalog.
