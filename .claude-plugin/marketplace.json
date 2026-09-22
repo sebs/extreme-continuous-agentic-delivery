@@ -27,9 +27,9 @@
     {
       "name": "xp-planning",
       "source": "./plugins/xp-planning",
-      "description": "Thin vertical story slicing and time-boxed spikes — well-shaped work before the TDD loop.",
+      "description": "Thin vertical story slicing, time-boxed spikes, and a scored, ranked backlog — well-shaped, well-ordered work before the TDD loop.",
       "category": "workflow",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "name": "xp-integration",

@@ -2,7 +2,7 @@
 
 **A Claude Code plugin marketplace that makes Claude practice Extreme Programming.**
 
-Four plugins, nine skills, five commands — each one aimed at a specific way a language model fails at XP, not at reciting the practice.
+Four plugins, twelve skills, eight commands — each one aimed at a specific way a language model fails at XP, not at reciting the practice.
 
 📦 **Catalog:** <https://sebs.github.io/extreme-continuous-agentic-delivery/>
 
@@ -21,7 +21,7 @@ The repo is the distribution channel — Claude Code installs straight from it. 
 |---|---|---|
 | **[`xp-testing`](plugins/xp-testing/)** *(flagship)* | `tdd`, `refactor-on-green`, `simple-design`, `exploratory-testing` | `/tdd <behavior>` |
 | **[`xp-pairing`](plugins/xp-pairing/)** *(foundational)* | `pairing-stance`, `ping-pong` | `/pair [driver\|navigator\|ping-pong]` |
-| **[`xp-planning`](plugins/xp-planning/)** | `story-slicing`, `spike` | `/story <feature>`, `/spike <question>` |
+| **[`xp-planning`](plugins/xp-planning/)** | `story-writing`, `story-slicing`, `estimation`, `backlog-prioritization`, `spike` | `/write-story <request>`, `/story <feature>`, `/estimate <story>`, `/prioritize <backlog>`, `/spike <question>` |
 | **[`xp-integration`](plugins/xp-integration/)** | `keep-it-green` | `/integrate` |
 
 Install only what you want. If you install one thing, make it `xp-testing`; if you install two, add `xp-pairing`, because `pairing-stance` is the stance the rest rest on.
